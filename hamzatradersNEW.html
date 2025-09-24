@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Traders - Stationery & Printing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#4f46e5',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- React and ReactDOM CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        const HamzaTraders = () => {
+            const [activeTab, setActiveTab] = useState('stationery');
+
+            const products = {
+                stationery: [
+                    {
+                        name: 'Pens',
+                        category: 'Writing Supplies',
+                        price: 'Rs. 20',
+                        description: 'High quality pens in various colors',
+                        icon: '🖊️'
+                    },
+                    {
+                        name: 'Notebooks',
+                        category: 'Writing Supplies',
+                        price: 'Rs. 50-200',
+                        description: 'Various sizes and page counts available',
+                        icon: '📓'
+                    },
+                    {
+                        name: 'Stationery Sets',
+                        category: 'Writing Supplies',
+                        price: 'Rs. 500',
+                        description: 'Complete stationery sets for students',
+                        icon: '📦'
+                    },
+                    {
+                        name: 'Highlighters',
+                        category: 'Writing Supplies',
+                        price: 'Rs. 100',
+                        description: 'Multi-color highlighters for studying',
+                        icon: '🖍️'
+                    }
+                ],
+                photocopy: [
+                    {
+                        name: 'Black & White Copy',
+                        category: 'Photocopy Services',
+                        price: 'Rs. 2 per page',
+                        description: 'High quality black and white copies',
+                        icon: '📄'
+                    },
+                    {
+                        name: 'Color Copy',
+                        category: 'Photocopy Services',
+                        price: 'Rs. 10 per page',
+                        description: 'Vibrant color photocopies',
+                        icon: '🎨'
+                    },
+                    {
+                        name: 'Double Sided Copy',
+                        category: 'Photocopy Services',
+                        price: 'Rs. 3 per page',
+                        description: 'Professional double-sided copies',
+                        icon: '📋'
+                    }
+                ],
+                printing: [
+                    {
+                        name: 'Visiting Cards',
+                        category: 'Printing Services',
+                        price: 'Rs. 200',
+                        description: 'Premium quality visiting cards',
+                        icon: '📇'
+                    },
+                    {
+                        name: 'Posters',
+                        category: 'Printing Services',
+                        price: 'Rs. 150',
+                        description: 'Various size posters and banners',
+                        icon: '📰'
+                    },
+                    {
+                        name: 'Banners',
+                        category: 'Printing Services',
+                        price: 'Rs. 500',
+                        description: 'Large format banner printing',
+                        icon: '🚩'
+                    }
+                ]
+            };
+
+            return React.createElement('div', { className: 'min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100' },
+                // Header
+                React.createElement('header', { 
+                    className: 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 shadow-lg' 
+                },
+                    React.createElement('div', { className: 'container mx-auto px-4' },
+                        React.createElement('div', { className: 'flex flex-col md:flex-row justify-between items-center' },
+                            React.createElement('div', { className: 'text-center md:text-left mb-4 md:mb-0' },
+                                React.createElement('h1', { className: 'text-3xl font-bold mb-2' }, 'Hamza Traders'),
+                                React.createElement('p', { className: 'opacity-90' }, 'Your Complete Stationery & Printing Solution')
+                            ),
+                            React.createElement('div', { className: 'flex flex-col sm:flex-row gap-4 text-sm bg-white/10 rounded-lg p-3' },
+                                React.createElement('div', null,
+                                    React.createElement('p', { className: 'font-semibold' }, '📞 Phone: 0300-1234567')
+                                ),
+                                React.createElement('div', null,
+                                    React.createElement('p', { className: 'font-semibold' }, '📍 Address: City Center Market')
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Navigation Tabs
+                React.createElement('nav', { className: 'bg-white shadow-md py-4' },
+                    React.createElement('div', { className: 'container mx-auto px-4' },
+                        React.createElement('div', { className: 'flex flex-wrap justify-center gap-2' },
+                            ['stationery', 'photocopy', 'printing'].map(tab =>
+                                React.createElement('button', {
+                                    key: tab,
+                                    onClick: () => setActiveTab(tab),
+                                    className: `px-6 py-2 rounded-lg font-medium transition-colors ${
+                                        activeTab === tab
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
+                                    }`
+                                }, 
+                                    tab === 'stationery' ? '📝 Stationery' :
+                                    tab === 'photocopy' ? '📄 Photocopy' : '🖨️ Printing'
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Main Content
+                React.createElement('main', { className: 'container mx-auto px-4 py-8' },
+                    // Hero Section
+                    React.createElement('section', { className: 'text-center mb-12' },
+                        React.createElement('h2', { className: 'text-3xl font-bold text-blue-800 mb-4' }, 'Welcome to Hamza Traders'),
+                        React.createElement('p', { className: 'text-lg text-gray-600 max-w-2xl mx-auto' },
+                            'We provide high-quality stationery, fast photocopy, and professional printing services'
+                        )
+                    ),
+
+                    // Products Grid
+                    React.createElement('section', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12' },
+                        products[activeTab].map((product, index) =>
+                            React.createElement('div', {
+                                key: index,
+                                className: 'bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow'
+                            },
+                                React.createElement('div', { className: 'text-center mb-4' },
+                                    React.createElement('div', { className: 'w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl' },
+                                        product.icon
+                                    ),
+                                    React.createElement('h3', { className: 'text-xl font-semibold text-gray-800 mb-2' }, product.name),
+                                    React.createElement('p', { className: 'text-sm text-blue-600 mb-2' }, product.category),
+                                    React.createElement('p', { className: 'text-2xl font-bold text-green-600 mb-3' }, product.price),
+                                    React.createElement('p', { className: 'text-gray-600 text-sm' }, product.description)
+                                ),
+                                React.createElement('button', {
+                                    className: 'w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors'
+                                }, 'Order Now')
+                            )
+                        )
+                    ),
+
+                    // Contact Section
+                    React.createElement('section', { className: 'text-center bg-blue-50 rounded-lg p-8' },
+                        React.createElement('h2', { className: 'text-2xl font-bold text-blue-800 mb-6' }, 'Contact Us'),
+                        React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto' },
+                            React.createElement('div', { className: 'bg-white p-4 rounded-lg' },
+                                React.createElement('h3', { className: 'font-semibold mb-2' }, '📞 Phone Numbers'),
+                                React.createElement('p', null, '0300-1234567'),
+                                React.createElement('p', null, '042-1234567')
+                            ),
+                            React.createElement('div', { className: 'bg-white p-4 rounded-lg' },
+                                React.createElement('h3', { className: 'font-semibold mb-2' }, '📍 Address'),
+                                React.createElement('p', null, 'AZEEM PURA SHAH FAISAL'),
+                                React.createElement('p', null, 'KARACHI PAKISTAN')
+                            )
+                        )
+                    )
+                ),
+
+                // Footer
+                React.createElement('footer', { className: 'bg-blue-800 text-white py-6 mt-8' },
+                    React.createElement('div', { className: 'container mx-auto px-4 text-center' },
+                        React.createElement('p', { className: 'text-sm' },
+                            '© 2024 Hamza Traders. All rights reserved.'
+                        )
+                    )
+                )
+            );
+        };
+
+        // Render the app
+        ReactDOM.render(React.createElement(HamzaTraders), document.getElementById('root'));
+    </script>
+</body>
+</html>
